@@ -22,10 +22,26 @@
 
 1. Owl3D 앱 → **Stereo 3D Playback** → Stereo format **Side-by-side** → **Start**
 2. `Shift3D-AMD.exe` 더블클릭 → 볼 창(YouTube, 영상 플레이어 등) 고르기 → **시작**
-   - 고른 창을 Shift3D가 **전체 화면으로 바꾼다** (브라우저가 아닌 프로그램은 테두리 없는 창으로). **브라우저는 직접 F11** 을 누르면 페이지 전체가 3D가 된다. 끝내면 원래대로 돌린다.
-   - 3D 화면 위에서도 마우스·키보드는 그 창에 그대로 들어간다.
+   - 고른 창은 **크기 그대로** 둔다. Shift3D 창이 전체 화면으로 떠서 Owl3D가 그것을 3D로 엮는다
+     (AMD에서 Owl3D는 맨 앞의 전체 화면 창만 엮는다).
+   - 3D 화면 위에서 **마우스는 그 창으로 넘겨 주고, 키보드는 그 창에 그대로** 들어간다 (재생·멈춤·탐색 등).
+     직접 마우스 입력(raw input)을 읽는 일부 게임은 마우스가 안 먹을 수 있다.
 3. 끄기: `Ctrl+Alt+Q`
 
+### 브라우저(크롬·엣지)는 옵션 하나가 필요하다
+
+브라우저는 다른 창에 완전히 가려지면 그리기를 멈춘다. 그러면 3D 화면이 멈춘 그림이 된다.
+가려져도 계속 그리도록 브라우저를 아래 옵션으로 실행한다:
+
+```
+--disable-features=CalculateNativeWinOcclusion
+```
+
+- 바로가기(작업 표시줄·바탕 화면) 오른쪽 클릭 → 속성 → **대상** 끝에 한 칸 띄우고 붙인다.
+  예: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-features=CalculateNativeWinOcclusion`
+- 브라우저를 완전히 닫았다가(트레이 포함) 그 바로가기로 다시 열어야 적용된다.
+
+### 그 밖에
 - 처음 실행할 때 안에 든 파일(약 140MB)을 `%LOCALAPPDATA%\Shift3D\` 에 풀어 둔다. 설정과 기록(`shift3d.log`)도 거기 있다. 지우려면 exe와 그 폴더를 지우면 된다.
 - 서명되지 않은 exe라 처음에 Windows SmartScreen 경고가 뜰 수 있다 (추가 정보 → 실행).
 - '항상 위'에 떠 있는 다른 창(일부 채팅·AI 앱 등)이 있으면 Owl3D가 3D를 켜지 않는다. 최소화할 것.
@@ -64,8 +80,8 @@ Owl3D's **Stereo 3D Playback** (Side-by-side) does the eye tracking and weaving.
 no Owl3D files are included.
 
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
-2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). Apps are switched to borderless fullscreen and restored on exit (browsers: press F11 yourself);
-   mouse and keyboard keep working in it.
+2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
+   and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
 3. Quit with `Ctrl+Alt+Q`. Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`.
 
 ## 라이선스 / Third-party
