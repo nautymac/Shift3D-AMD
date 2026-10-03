@@ -24,8 +24,8 @@
 2. `Shift3D-AMD.exe` 더블클릭 → 볼 창(YouTube, 영상 플레이어 등) 고르기 → **시작**
    - 고른 창은 **크기 그대로** 둔다. Shift3D 창이 전체 화면으로 떠서 Owl3D가 그것을 3D로 엮는다
      (AMD에서 Owl3D는 맨 앞의 전체 화면 창만 엮는다).
-   - 3D 화면 위에서 **마우스는 그 창으로 넘겨 주고, 키보드는 그 창에 그대로** 들어간다 (재생·멈춤·탐색 등).
-     직접 마우스 입력(raw input)을 읽는 일부 게임은 마우스가 안 먹을 수 있다.
+   - 3D 화면 위에서도 **마우스(휠·호버·클릭)와 키보드가 그 창에 그대로** 들어간다 — YouTube 플레이어 UI도 쓸 수 있다.
+     (창이 화면을 거의 채울 때. 작은 창이면 마우스를 대신 넘겨 주는데, 이때는 휠·호버가 안 될 수 있다)
 3. 끄기: `Ctrl+Alt+Q`
 
 ### 브라우저(크롬·엣지)는 옵션 하나가 필요하다
@@ -61,6 +61,8 @@
 |---|---|
 | ↑ / ↓ | 시차(입체 강도) 강하게 / 약하게 |
 | ← / → | 깊이 — 화면 뒤로 / 앞으로 |
+| Home / End | 밝기 올리기 / 내리기 (엮으면 어두워 보일 때). 3D를 끄면 원래대로 |
+| PageUp / PageDown | 감마 올리기 / 내리기 (중간톤 밝기). 3D를 끄면 원래대로 |
 | Q | 종료 |
 | H | 3D 켜기 / 끄기 |
 | M | 모드 (AI 변환 → 이미 SBS인 화면 → 2D 그대로 → 좌우 색 시험) |
@@ -82,7 +84,7 @@ no Owl3D files are included.
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
 2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
    and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
-3. Quit with `Ctrl+Alt+Q`. Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`.
+3. Quit with `Ctrl+Alt+Q`. Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
 
 ## 라이선스 / Third-party
 
