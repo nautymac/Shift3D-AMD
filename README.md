@@ -49,6 +49,21 @@
 - 서명되지 않은 exe라 처음에 Windows SmartScreen 경고가 뜰 수 있다 (추가 정보 → 실행).
 - '항상 위'에 떠 있는 다른 창(일부 채팅·AI 앱 등)이 있으면 Owl3D가 3D를 켜지 않는다. 최소화할 것.
 
+## 이미 좌우(SBS)인 화면
+
+선택 화면에서 **"이미 좌우(SBS) 3D인 화면"** 을 체크하면 AI 변환 없이 좌우를 그대로 Owl3D에 넘긴다.
+창모드로 띄운 SBS 영상 플레이어나 TriDef 같은 SBS 출력에 쓴다.
+
+- 보통 SBS(half-SBS: 16:9 한 장에 두 눈을 가로로 눌러 넣은 것) — 한쪽 눈을 다시 늘려 원래 16:9로 보여 준다.
+- 아주 넓은 창(3:1 이상, 예: 32:9 full-SBS) — 반쪽이 그 자체로 한 화면이므로 늘리지 않는다.
+
+## 화면 크기와 비율
+
+- 창이 화면을 거의 채우면(가로나 세로 90% 이상) 확대하지 않고 **창 자리 그대로 1:1** 로 그린다. 마우스가 정확히 맞는다.
+- 그보다 작은 창(낮은 해상도로 띄운 게임 등)은 **원래 비율(16:9 등)을 지킨 채** 화면에 맞춰 키운다. 남는 곳은 검게 둔다.
+  이때 마우스는 Shift3D가 대신 넘겨 주므로 게임에 따라 안 먹을 수 있다.
+- 캡처는 창이 실제로 그린 해상도 그대로다. 가장 선명하게 보려면 게임 해상도를 모니터 출력 해상도에 맞춘다.
+
 ## 밝기·감마 (선택 화면에서 고름)
 
 - **기본** — 밝기 1.00, 감마 1.00 으로 시작
@@ -94,7 +109,10 @@ no Owl3D files are included.
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
 2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
    and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
-3. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
+3. Already side-by-side content (a windowed SBS player, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight to Owl3D.
+   Half-SBS is stretched back to 16:9; windows 3:1 or wider are treated as full-SBS. A window that nearly fills the screen is drawn 1:1 in place
+   (exact mouse); a smaller one is scaled up keeping its aspect ratio.
+4. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
 
 ## 라이선스 / Third-party
 
