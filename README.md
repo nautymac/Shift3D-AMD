@@ -26,7 +26,10 @@
      (AMD에서 Owl3D는 맨 앞의 전체 화면 창만 엮는다).
    - 3D 화면 위에서도 **마우스(휠·호버·클릭)와 키보드가 그 창에 그대로** 들어간다 — YouTube 플레이어 UI도 쓸 수 있다.
      (창이 화면을 거의 채울 때. 작은 창이면 마우스를 대신 넘겨 주는데, 이때는 휠·호버가 안 될 수 있다)
-3. 끄기: `Ctrl+Alt+Q`
+3. 끄기: `Ctrl+Alt+Q` 또는 작업 표시줄 트레이의 Shift3D 아이콘 → 종료
+
+- 검은 콘솔 창 없이 선택 화면과 트레이 아이콘만 뜬다. 오류로 멈추면 알림창으로 알려 준다.
+- 화면 글은 Windows 표시 언어에 따라 한국어 / 영어 (`--lang ko|en` 으로 바꿀 수 있다).
 
 ### 브라우저(크롬·엣지)는 옵션 하나가 필요하다
 
@@ -91,7 +94,7 @@ no Owl3D files are included.
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
 2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
    and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
-3. Quit with `Ctrl+Alt+Q`. Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
+3. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
 
 ## 라이선스 / Third-party
 
