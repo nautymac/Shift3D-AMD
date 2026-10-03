@@ -22,7 +22,7 @@
 
 1. Owl3D 앱 → **Stereo 3D Playback** → Stereo format **Side-by-side** → **Start**
 2. `Shift3D-AMD.exe` 더블클릭 → 볼 창(YouTube, 영상 플레이어 등) 고르기 → **시작**
-   - 고른 창을 Shift3D가 **전체 화면으로 바꾼다** (브라우저는 F11 — 동영상만이 아니라 페이지 전체가 3D, 그 밖의 프로그램은 테두리 없는 창). 끝내면 원래대로 돌린다.
+   - 고른 창을 Shift3D가 **전체 화면으로 바꾼다** (브라우저가 아닌 프로그램은 테두리 없는 창으로). **브라우저는 직접 F11** 을 누르면 페이지 전체가 3D가 된다. 끝내면 원래대로 돌린다.
    - 3D 화면 위에서도 마우스·키보드는 그 창에 그대로 들어간다.
 3. 끄기: `Ctrl+Alt+Q`
 
@@ -64,7 +64,7 @@ Owl3D's **Stereo 3D Playback** (Side-by-side) does the eye tracking and weaving.
 no Owl3D files are included.
 
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
-2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window is switched to fullscreen and restored on exit;
+2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). Apps are switched to borderless fullscreen and restored on exit (browsers: press F11 yourself);
    mouse and keyboard keep working in it.
 3. Quit with `Ctrl+Alt+Q`. Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`.
 
