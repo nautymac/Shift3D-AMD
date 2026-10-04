@@ -51,8 +51,11 @@
 
 ## 이미 좌우(SBS)인 화면
 
-선택 화면에서 **"이미 좌우(SBS) 3D인 화면"** 을 체크하면 AI 변환 없이 좌우를 그대로 Owl3D에 넘긴다.
-창모드로 띄운 SBS 영상 플레이어나 TriDef 같은 SBS 출력에 쓴다.
+선택 화면에서 **"이미 좌우(SBS) 3D인 화면"** 을 체크하면 AI 변환 없이 좌우를 그대로 넘긴다 (SBS 영상, TriDef 같은 SBS 출력).
+
+- **고른 창이 화면 전체를 덮을 때만 3D로 바뀐다** — 크롬이면 YouTube 전체 화면이나 F11, 영상 플레이어면 전체 화면.
+  그 전(창 상태, 최대화 포함)에는 Shift3D 화면을 숨겨 평소 화면 그대로 둔다. 페이지·파일을 고르고 조작하기 쉽게.
+  전체 화면을 빠져나오면 다시 평소 화면이 된다.
 
 - 보통 SBS(half-SBS: 16:9 한 장에 두 눈을 가로로 눌러 넣은 것) — 한쪽 눈을 다시 늘려 원래 16:9로 보여 준다.
 - 아주 넓은 창(3:1 이상, 예: 32:9 full-SBS) — 반쪽이 그 자체로 한 화면이므로 늘리지 않는다.
@@ -123,7 +126,8 @@ no Owl3D files are included.
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
 2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
    and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
-3. Already side-by-side content (a windowed SBS player, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight to Owl3D.
+3. Already side-by-side content (SBS video, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight through.
+   3D starts only while that window covers the whole screen (YouTube fullscreen, F11, a player's fullscreen); until then Shift3D stays hidden so the page is easy to use.
    Half-SBS is stretched back to 16:9; windows 3:1 or wider are treated as full-SBS. A window that nearly fills the screen is drawn 1:1 in place
    (exact mouse); a smaller one is scaled up keeping its aspect ratio.
 4. Section 4: "원본 해상도로 엮기" (full-resolution weave, on by default) opens Owl3D's hidden Controls panel for a moment and sets
