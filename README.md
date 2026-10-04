@@ -64,6 +64,20 @@
   이때 마우스는 Shift3D가 대신 넘겨 주므로 게임에 따라 안 먹을 수 있다.
 - 캡처는 창이 실제로 그린 해상도 그대로다. 가장 선명하게 보려면 게임 해상도를 모니터 출력 해상도에 맞춘다.
 
+## Owl3D 화질과 Stereo format (선택 화면 4번)
+
+**원본 해상도로 엮기** (기본으로 켜짐)
+- Owl3D는 화면을 다시 캡처해 눈마다 2560×1440으로 줄였다가 4K로 키워서 엮는다. 위빙이 초당 45장 아래로 떨어지면 1280×720까지 스스로 낮춘다.
+- 이 항목을 켜 두면 Shift3D가 Owl3D의 숨은 설정 창(`Shift`+`` ` ``+`H`)을 잠깐 열어 **Warp res: Native**, **Degradation auto-adjust: 끔** 으로 바꾸고 닫는다.
+- Owl3D는 이 값을 저장하지 않으므로 Owl3D 3D가 새로 켜질 때마다 다시 바꾼다. 결과는 `shift3d.log` 에 `[owl3d] 화질 설정: …` 으로 남는다.
+- 잘 안 됐으면 트레이 아이콘 → **Owl3D 화질 다시 적용**.
+- 끄면 GPU가 모자랄 때 화질을 낮추는 대신 화면이 끊길 수 있다. 끊기면 게임 fps를 제한한다.
+
+**Stereo format은 Side-by-side로**
+- Owl3D 앱의 Stereo format이 **Auto** 면 Owl3D가 좌우가 덜 닮은 장면(어두운 장면, 장면 전환, 화면을 가로지르는 UI)마다 2D로 돌아간다 — "잘 되다가 3D가 저절로 풀린다".
+- 2026-10-04 실측: Auto로 4분 동안 13번 풀림, Side-by-side 세션은 0번.
+- Auto로 되어 있으면 Shift3D가 화면에 알려 준다.
+
 ## 밝기·감마 (선택 화면에서 고름)
 
 - **기본** — 밝기 1.00, 감마 1.00 으로 시작
@@ -112,7 +126,11 @@ no Owl3D files are included.
 3. Already side-by-side content (a windowed SBS player, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight to Owl3D.
    Half-SBS is stretched back to 16:9; windows 3:1 or wider are treated as full-SBS. A window that nearly fills the screen is drawn 1:1 in place
    (exact mouse); a smaller one is scaled up keeping its aspect ratio.
-4. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
+4. Section 4: "원본 해상도로 엮기" (full-resolution weave, on by default) opens Owl3D's hidden Controls panel for a moment and sets
+   **Warp res: Native** and **Degradation auto-adjust: off** (Owl3D otherwise resamples each eye to 1440p and drops to 720p under load;
+   it does not save these, so Shift3D sets them again whenever Owl3D 3D restarts; tray → re-apply). Keep Owl3D's Stereo format on
+   **Side-by-side** — on Auto it falls back to 2D whenever the halves look less alike; Shift3D warns on screen when it is Auto.
+5. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
 
 ## 라이선스 / Third-party
 
