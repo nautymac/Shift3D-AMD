@@ -146,6 +146,7 @@ no Owl3D files are included.
 | DirectML 1.15 | Microsoft 재배포 라이선스 — `licenses/DirectML-LICENSE.txt` |
 | Depth Anything V3 Small (onnx-community) | Apache-2.0 — `licenses/Apache-2.0.txt` |
 | YuNet 얼굴 인식 모델 (OpenCV Zoo) | MIT |
+| MediaPipe Iris 눈(홍채) 모델 (Google) | Apache-2.0 — `licenses/Apache-2.0.txt` |
 | Microsoft Visual C++ 런타임 | Visual Studio 재배포 조건 |
 
 Owl3D, Owl3D Shift는 해당 권리자의 상표다.
