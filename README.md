@@ -85,7 +85,7 @@
 
 ## Owl3D 엮기 해상도 (선택 화면 4번)
 
-Owl3D는 기본으로 1440p로 줄여 엮고, 부하가 크면 더 낮춘다(자동 화질 낮춤). Shift3D가 3D가 켜진 뒤 Owl3D의 숨은 설정을 자동으로 맞춘다 (잠깐 설정 창이 스칠 수 있다):
+"이미 좌우(SBS)"를 체크했을 때만 쓴다 (AI 변환은 원본 해상도로 엮는다). Owl3D는 기본으로 1440p로 줄여 엮고, 부하가 크면 더 낮춘다(자동 화질 낮춤). Shift3D가 3D가 켜진 뒤 Owl3D의 숨은 설정을 자동으로 맞춘다 (잠깐 설정 창이 스칠 수 있다):
 
 - **1440p** — 더 선명. **1080p** — 더 빠르고 조금 부드럽다(낮은 사양 권장). 마지막 선택을 기억한다.
 - 자동 화질 낮춤은 끈다 — 고른 해상도가 그대로 유지된다.
@@ -155,7 +155,7 @@ no Owl3D files are included. Feature overview: [docs/FEATURES.md](docs/FEATURES.
    drawn 1:1 in place; a smaller one is scaled up keeping its aspect ratio. For a windowed game shown enlarged, the real cursor is kept
    inside the game window and moved in proportion, with an arrow drawn on the 3D picture, so clicks land where you see them.
    Windowed mode is recommended on slow PCs.
-5. Section 4 picks Owl3D's weave resolution, 1440p or 1080p (lighter); Shift3D sets Owl3D's hidden setting after 3D starts and turns its
+5. With the SBS box ticked, section 4 picks Owl3D's weave resolution, 1440p or 1080p (lighter; AI mode weaves at native resolution); Shift3D sets Owl3D's hidden setting after 3D starts and turns its
    auto quality drop off. Command line: `--owl-res native|1440|1080|720`.
 6. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display
    language (`--lang en` forces English).
