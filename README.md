@@ -140,20 +140,28 @@ Owl3D는 기본으로 1440p로 줄여 엮고, 부하가 크면 더 낮춘다(자
 ## English (short)
 
 Watch any window in glasses-free 3D on an **Owl3D Shift** with a GPU where Owl3D's own 2D→3D does not run (e.g. AMD).
-Shift3D turns the window into side-by-side 3D with a small depth model (Depth Anything V3 Small on DirectML, any vendor);
+Shift3D turns the window into side-by-side 3D with a small depth model (Depth Anything V3 Small on DirectML, any GPU vendor);
 Owl3D's **Stereo 3D Playback** (Side-by-side) does the eye tracking and weaving. Unofficial, not affiliated with Owl3D;
-no Owl3D files are included.
+no Owl3D files are included. Feature overview: [docs/FEATURES.md](docs/FEATURES.md).
 
-1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
-2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
-   and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
-3. Already side-by-side content (SBS video, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight to Owl3D; the depth section is greyed out.
-   For browsers and video players 3D starts only while that window covers the whole screen (YouTube fullscreen, F11, a player's fullscreen); until then Shift3D stays hidden so the page is easy to use. Games that output SBS themselves go 3D at once; a minimized game window is restored.
-   Half-SBS is stretched back to 16:9; windows 3:1 or wider are treated as full-SBS. A window that nearly fills the screen is drawn 1:1 in place
-   (exact mouse); a smaller one is scaled up keeping its aspect ratio. For a windowed game shown enlarged, the real cursor is kept inside the game
-   window and moved in proportion, with an arrow drawn on the 3D picture, so clicks land where you see them — windowed mode is recommended on slow PCs.
-4. Section 4 picks Owl3D's weave resolution, 1440p or 1080p (faster); Shift3D sets Owl3D's hidden setting after 3D starts and turns its auto quality drop off. `--owl-res native|1440|1080|720` on the command line.
-5. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
+1. Owl3D app → Stereo 3D Playback → Side-by-side → Start.
+2. Run `Shift3D-AMD.exe`, pick the window, press Start. The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves.
+   Mouse and keyboard keep working on the 3D picture. Browsers (Chrome/Edge): start them with `--disable-features=CalculateNativeWinOcclusion`,
+   or they stop drawing while covered.
+3. Already side-by-side content (SBS video, TriDef, games that render SBS): tick the "already side-by-side" box — no AI, the halves go straight
+   to Owl3D, and the depth section is greyed out. Browsers and video players switch to 3D only while fullscreen (YouTube fullscreen, F11);
+   until then Shift3D stays hidden so the page is easy to use. SBS games go 3D at once; a minimized game window is restored.
+4. Picture placement: half-SBS is stretched back to 16:9, windows 3:1 or wider count as full-SBS. A window that nearly fills the screen is
+   drawn 1:1 in place; a smaller one is scaled up keeping its aspect ratio. For a windowed game shown enlarged, the real cursor is kept
+   inside the game window and moved in proportion, with an arrow drawn on the 3D picture, so clicks land where you see them.
+   Windowed mode is recommended on slow PCs.
+5. Section 4 picks Owl3D's weave resolution, 1440p or 1080p (lighter); Shift3D sets Owl3D's hidden setting after 3D starts and turns its
+   auto quality drop off. Command line: `--owl-res native|1440|1080|720`.
+6. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display
+   language (`--lang en` forces English).
+
+Hotkeys (Ctrl + Alt + key): ↑/↓ parallax, ←/→ depth, Home/End brightness, PageUp/PageDown gamma (brightness and gamma apply to the
+3D output only and are remembered).
 
 ## 라이선스 / Third-party
 
