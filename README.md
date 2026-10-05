@@ -51,18 +51,16 @@
 
 ## 이미 좌우(SBS)인 화면
 
-선택 화면에서 **"이미 좌우(SBS) 3D인 화면"** 을 체크하면 AI 변환 없이 좌우를 그대로 넘긴다 (SBS 영상, TriDef 같은 SBS 출력).
+선택 화면에서 **"이미 좌우(SBS) 3D인 화면"** 을 체크하면 AI 변환 없이 좌우를 그대로 Owl3D에 넘긴다 (SBS 영상, TriDef 같은 SBS 출력).
+이때 2번 "깊이 계산"은 쓰이지 않으므로 회색으로 꺼진다.
 
-- **고른 창이 화면 전체를 덮을 때만 3D로 바뀐다** — 크롬이면 YouTube 전체 화면이나 F11, 영상 플레이어면 전체 화면.
+- **브라우저와 영상 플레이어는 그 창이 화면 전체를 덮을 때만 3D로 바뀐다** — 크롬이면 YouTube 전체 화면이나 F11, 플레이어면 전체 화면.
   그 전(창 상태, 최대화 포함)에는 Shift3D 화면을 숨겨 평소 화면 그대로 둔다. 페이지·파일을 고르고 조작하기 쉽게.
-  전체 화면을 빠져나오면 다시 평소 화면이 된다.
+  전체 화면을 빠져나오면 다시 평소 화면이 된다 (1초 안의 깜빡임은 무시).
+- 게임처럼 SBS를 직접 내는 프로그램은 바로 3D로 바뀐다. 게임이 최소화되면 트레이에서 알려 준다.
 
 - 보통 SBS(half-SBS: 16:9 한 장에 두 눈을 가로로 눌러 넣은 것) — 한쪽 눈을 다시 늘려 원래 16:9로 보여 준다.
 - 아주 넓은 창(3:1 이상, 예: 32:9 full-SBS) — 반쪽이 그 자체로 한 화면이므로 늘리지 않는다.
-
-## 게임 창 (선택 화면 1번)
-
-- **게임 창을 테두리 없는 전체 화면으로** (선택 화면 1번): 창 모드 게임의 테두리를 떼고 모니터에 꽉 맞춘다. Shift3D를 끝내면 원래 크기·자리로 돌아간다. 독점 전체 화면 게임은 3D 화면이 위에 뜨는 순간 최소화되므로, 게임은 창 모드로 두고 이 항목을 켠다.
 
 ## 화면 크기와 비율
 
@@ -70,20 +68,6 @@
 - 그보다 작은 창(낮은 해상도로 띄운 게임 등)은 **원래 비율(16:9 등)을 지킨 채** 화면에 맞춰 키운다. 남는 곳은 검게 둔다.
   이때 마우스는 Shift3D가 대신 넘겨 주므로 게임에 따라 안 먹을 수 있다.
 - 캡처는 창이 실제로 그린 해상도 그대로다. 가장 선명하게 보려면 게임 해상도를 모니터 출력 해상도에 맞춘다.
-
-## Owl3D 화질과 Stereo format (선택 화면 4번)
-
-**원본 해상도로 엮기** (기본으로 켜짐)
-- Owl3D는 화면을 다시 캡처해 눈마다 2560×1440으로 줄였다가 4K로 키워서 엮는다. 위빙이 초당 45장 아래로 떨어지면 1280×720까지 스스로 낮춘다.
-- 이 항목을 켜 두면 Shift3D가 Owl3D의 숨은 설정 창(`Shift`+`` ` ``+`H`)을 잠깐 열어 **Warp res: Native**, **Degradation auto-adjust: 끔** 으로 바꾸고 닫는다.
-- Owl3D는 이 값을 저장하지 않으므로 Owl3D 3D가 새로 켜질 때마다 다시 바꾼다. 결과는 `shift3d.log` 에 `[owl3d] 화질 설정: …` 으로 남는다.
-- 잘 안 됐으면 트레이 아이콘 → **Owl3D 화질 다시 적용**.
-- 끄면 GPU가 모자랄 때 화질을 낮추는 대신 화면이 끊길 수 있다. 끊기면 게임 fps를 제한한다.
-
-**Stereo format은 Side-by-side로**
-- Owl3D 앱의 Stereo format이 **Auto** 면 Owl3D가 좌우가 덜 닮은 장면(어두운 장면, 장면 전환, 화면을 가로지르는 UI)마다 2D로 돌아간다 — "잘 되다가 3D가 저절로 풀린다".
-- 2026-10-04 실측: Auto로 4분 동안 13번 풀림, Side-by-side 세션은 0번.
-- Auto로 되어 있으면 Shift3D가 화면에 알려 준다.
 
 ## 밝기·감마 (선택 화면에서 고름)
 
@@ -130,15 +114,11 @@ no Owl3D files are included.
 1. Owl3D app → Stereo 3D Playback → Side-by-side → Start
 2. Run `Shift3D-AMD.exe`, pick the window, press 시작 (Start). The window keeps its size; Shift3D shows a fullscreen window that Owl3D weaves,
    and passes the mouse on (the keyboard stays with the window). Browsers: start them with `--disable-features=CalculateNativeWinOcclusion`, or they stop drawing while covered.
-3. Already side-by-side content (SBS video, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight through.
-   3D starts only while that window covers the whole screen (YouTube fullscreen, F11, a player's fullscreen); until then Shift3D stays hidden so the page is easy to use.
+3. Already side-by-side content (SBS video, TriDef): tick "이미 좌우(SBS)" (already SBS) — no AI, the halves go straight to Owl3D; the depth section is greyed out.
+   For browsers and video players 3D starts only while that window covers the whole screen (YouTube fullscreen, F11, a player's fullscreen); until then Shift3D stays hidden so the page is easy to use. Games that output SBS themselves go 3D at once.
    Half-SBS is stretched back to 16:9; windows 3:1 or wider are treated as full-SBS. A window that nearly fills the screen is drawn 1:1 in place
    (exact mouse); a smaller one is scaled up keeping its aspect ratio.
-4. Section 4: "원본 해상도로 엮기" (full-resolution weave, on by default) opens Owl3D's hidden Controls panel for a moment and sets
-   **Warp res: Native** and **Degradation auto-adjust: off** (Owl3D otherwise resamples each eye to 1440p and drops to 720p under load;
-   it does not save these, so Shift3D sets them again whenever Owl3D 3D restarts; tray → re-apply). Keep Owl3D's Stereo format on
-   **Side-by-side** — on Auto it falls back to 2D whenever the halves look less alike; Shift3D warns on screen when it is Auto.
-5. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
+4. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display language (Korean or English, `--lang en` to force English). Parallax `Ctrl+Alt+↑/↓`, depth `Ctrl+Alt+←/→`, brightness `Ctrl+Alt+Home/End`, gamma `Ctrl+Alt+PageUp/PageDown`.
 
 ## 라이선스 / Third-party
 
@@ -150,7 +130,6 @@ no Owl3D files are included.
 | DirectML 1.15 | Microsoft 재배포 라이선스 — `licenses/DirectML-LICENSE.txt` |
 | Depth Anything V3 Small (onnx-community) | Apache-2.0 — `licenses/Apache-2.0.txt` |
 | YuNet 얼굴 인식 모델 (OpenCV Zoo) | MIT |
-| MediaPipe Iris 눈(홍채) 모델 (Google) | Apache-2.0 — `licenses/Apache-2.0.txt` |
 | Microsoft Visual C++ 런타임 | Visual Studio 재배포 조건 |
 
 Owl3D, Owl3D Shift는 해당 권리자의 상표다.
