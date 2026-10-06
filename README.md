@@ -93,7 +93,7 @@
 
 ## 모니터 전원 (Shift에는 전원 버튼이 없다)
 
-선택 화면의 **[모니터 끄기]** 버튼, 트레이 메뉴의 **"모니터 끄기"**, 또는 명령줄 `--monitor off` 로 모니터를 끈다 (DDC/CI 모니터 명령, 대기 상태).
+선택 화면의 **[모니터 끄기]** 버튼, 트레이 메뉴의 **"모니터 끄기"**, 또는 명령줄 `--monitor off` 로 모니터를 **완전히 끈다** (DDC/CI 모니터 명령). `--monitor standby` 는 대기만.
 **마우스나 키보드를 움직이면 자동으로 다시 켜진다.** 안 켜지면 `--monitor on`.
 
 ## 밝기·감마 (선택 화면에서 고름)
@@ -138,7 +138,7 @@
 | `--owl-res native\|1440\|1080\|720` | Owl3D 엮기 해상도 |
 | `--owl-quality` | Owl3D 엮기를 원본 해상도로, 자동 화질 낮춤 끄기 |
 | `--borderless` | 게임 창을 테두리 없는 전체 화면으로 (끝내면 원래대로). 게임이 4K로 돌아 느려질 수 있다 |
-| `--monitor off\|on` | 모니터 끄기(움직이면 켜짐) / 켜기 — DDC/CI |
+| `--monitor off\|standby\|on` | 모니터 완전 끄기 / 대기(둘 다 움직이면 켜짐) / 켜기 — DDC/CI |
 | `--lang ko\|en` | 화면 글 언어 |
 
 ---
@@ -163,7 +163,7 @@ no Owl3D files are included. Feature overview: [docs/FEATURES.md](docs/FEATURES.
    Windowed mode is recommended on slow PCs.
 5. With the SBS box ticked, section 4 picks Owl3D's weave resolution, 1440p or 1080p (lighter; AI mode weaves at native resolution); Shift3D sets Owl3D's hidden setting after 3D starts and turns its
    auto quality drop off. Command line: `--owl-res native|1440|1080|720`.
-6. The Shift has no power button: the picker's "Monitor off" button, the tray item or `--monitor off` turns it off over DDC/CI, and any mouse or keyboard input turns it back on (`--monitor on` if needed).
+6. The Shift has no power button: the picker's "Monitor off" button, the tray item or `--monitor off` powers it off over DDC/CI (`--monitor standby` for standby), and any mouse or keyboard input turns it back on (`--monitor on` if needed).
 7. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display
    language (`--lang en` forces English).
 
