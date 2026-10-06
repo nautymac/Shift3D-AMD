@@ -10,6 +10,7 @@
 - **Depth profile** — "Smooth" (runs on the GPU that isn't driving the screen, no stutter) or "Detail" (strongest GPU); chosen automatically for your PC.
 - **Window handling** — near-fullscreen windows drawn 1:1, smaller ones scaled up keeping their aspect ratio; a minimized game window is restored automatically.
 - **Brightness / gamma for the 3D output only**, remembered between runs.
+- **Monitor power** — the Shift has no power button: a "Monitor off" button (picker / tray / `--monitor off`) turns it off over DDC/CI, and any mouse or keyboard input turns it back on.
 - Korean / English UI, tray icon, no console window.
 
 **Hotkeys (Ctrl + Alt + …)**
@@ -39,6 +40,7 @@ Download: https://github.com/nautymac/Shift3D-AMD/releases
 - **깊이 계산 프로필** — 부드럽게(화면을 맡지 않은 GPU, 끊김 없음) / 정밀하게(가장 강한 GPU); PC에 맞춰 자동 선택.
 - **창 처리** — 화면을 거의 채우는 창은 1:1, 작은 창은 비율을 지켜 확대; 최소화된 게임 창은 자동으로 되살린다.
 - **밝기·감마는 3D 출력에만** 적용되고 기억된다.
+- **모니터 전원** — Shift에는 전원 버튼이 없다. [모니터 끄기] 버튼(선택 화면·트레이·`--monitor off`)으로 끄고, 마우스나 키보드를 움직이면 다시 켜진다 (DDC/CI).
 - 한/영 UI, 트레이 아이콘, 콘솔 창 없음.
 
 **단축키 (Ctrl + Alt + …)**
