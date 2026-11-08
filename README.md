@@ -9,7 +9,8 @@
 
 ## 기능 한눈에
 
-- **아무 창이나 2D → 3D** — 창을 캡처해 깊이 모델(Depth Anything V3 Small, DirectML — 어떤 GPU든)로 좌우(SBS) 영상을 만든다.
+- **아무 창이나 2D → 3D** — 창을 캡처해 깊이 모델(Video Depth Anything Small, DirectML — 어떤 GPU든)로 좌우(SBS) 영상을 만든다.
+  앞 프레임을 기억해서 프레임 사이 깊이가 덜 출렁인다. 더 가벼운 Depth Anything V3 Small로 `Ctrl+Alt+D` 한 번에 바꿀 수 있다 (고른 것을 기억).
 - **이미 SBS인 화면은 그대로** — SBS 영상·TriDef·SBS를 직접 내는 게임은 AI 없이 통과. 브라우저·영상 플레이어는 전체 화면일 때만 3D.
 - **3D 화면 위에서 마우스·키보드 그대로** — 창 모드 게임을 확대해 보일 때도 클릭이 정확히 맞는다. 낮은 사양은 창 모드 권장.
 - **Owl3D 엮기 해상도** 1440p / 1080p 선택 (Owl3D 숨은 설정 자동 적용, 자동 화질 낮춤 끔).
@@ -22,7 +23,7 @@
 ## 어떻게 동작하나
 
 - Owl3D 앱의 2D→3D(Live 3D)는 NVIDIA 전용이라 AMD에서는 켜지지 않는다. 하지만 **Stereo 3D Playback**(이미 좌우(SBS)인 영상을 눈 추적에 맞춰 엮는 기능)은 AMD에서도 된다.
-- Shift3D가 고른 창을 캡처해 AI 깊이 모델(Depth Anything V3 Small, DirectML)로 좌우(SBS) 영상을 만들고, Owl3D가 그것을 Shift에 엮는다.
+- Shift3D가 고른 창을 캡처해 AI 깊이 모델(Video Depth Anything Small 또는 Depth Anything V3 Small, DirectML)로 좌우(SBS) 영상을 만들고, Owl3D가 그것을 Shift에 엮는다.
 - 깊이 계산은 DirectML이라 AMD·Intel·NVIDIA 어느 그래픽카드에서도 돈다.
 
 ## 필요한 것
@@ -57,7 +58,7 @@
 - 브라우저를 완전히 닫았다가(트레이 포함) 그 바로가기로 다시 열어야 적용된다.
 
 ### 그 밖에
-- 처음 실행할 때 안에 든 파일(약 140MB)을 `%LOCALAPPDATA%\Shift3D\` 에 풀어 둔다. 설정과 기록(`shift3d.log`)도 거기 있다. 지우려면 exe와 그 폴더를 지우면 된다.
+- 처음 실행할 때 안에 든 파일(약 280MB)을 `%LOCALAPPDATA%\Shift3D\` 에 풀어 둔다. 설정과 기록(`shift3d.log`)도 거기 있다. 지우려면 exe와 그 폴더를 지우면 된다.
 - 서명되지 않은 exe라 처음에 Windows SmartScreen 경고가 뜰 수 있다 (추가 정보 → 실행).
 - '항상 위'에 떠 있는 다른 창(일부 채팅·AI 앱 등)이 있으면 Owl3D가 3D를 켜지 않는다. 최소화할 것.
 
@@ -110,7 +111,27 @@
 | 부드럽게 (기본) | 화면을 맡지 않은 카드, 내장 그래픽 우선 · 해상도 238 (그래픽카드가 하나뿐이면 154) | 화면이 끊기지 않는다 |
 | 정밀하게 | 가장 강한 카드 · 해상도 266 (화면을 맡은 카드면 196) | 화면 카드를 Owl3D와 같이 쓰면 깊이 계산이 쉬어 가며 돌아서 가끔 끊길 수 있다 |
 
-실측 (Ryzen 7 7840HS: Radeon 780M + RX 7600M XT, v0.3.5): 부드럽게 = 780M·238, 깊이 약 22fps·출력 60fps / 정밀하게 = 7600M XT·196, 깊이 약 15fps·출력 55fps. 이 PC에서는 '부드럽게'가 모든 면에서 낫다.
+해상도는 V3 Small에만 쓰인다. Video DA Small은 입력이 476×266으로 고정돼 있다.
+
+## 깊이 모델 (`Ctrl+Alt+D`로 바꿈)
+
+| 모델 | 특징 |
+|---|---|
+| **Video Depth Anything Small** (기본) | 앞 프레임들을 기억해서 프레임 사이 깊이가 덜 출렁이고, 경계를 더 잘게 잡는다. 대신 무겁다 |
+| Depth Anything V3 Small | 가볍고 깊이 갱신이 빠르다 (v0.4.13까지의 기본) |
+
+- `Ctrl+Alt+D`로 바꾸면 1~2초 뒤 새 모델로 이어진다 (쓰는 모델 하나만 그래픽 메모리에 올린다).
+- 고른 모델은 다음 실행에도 그대로 쓴다. 명령줄 `--depth-model vda|v3`가 그보다 우선한다.
+- 깊이 갱신이 느려도 화면 출력은 그대로다 — 빠르게 움직이는 장면에서 깊이가 조금 늦게 따라올 뿐이다. 거슬리면 V3 Small로.
+
+실측 (Ryzen 7 7840HS: Radeon 780M + RX 7600M XT, v0.4.14, 화면 출력은 두 모델 모두 같음):
+
+| | Video DA Small | V3 Small |
+|---|---|---|
+| 부드럽게 (780M) | 깊이 초당 8~9회 | 초당 19~22회 |
+| 정밀하게 (7600M XT, 화면 카드라 쉬어 감) | 초당 4~6회 | 초당 11~13회 |
+
+이 PC에서는 두 모델 모두 '부드럽게'가 낫다.
 
 ## 단축키 (모두 Ctrl + Alt 와 함께)
 
@@ -124,6 +145,7 @@
 | H | 3D 켜기 / 끄기 |
 | M | 모드 (AI 변환 → 이미 SBS인 화면 → 2D 그대로 → 좌우 색 시험) |
 | S | 좌우 눈 바꾸기 |
+| D | 깊이 모델 바꾸기 (Video DA Small ↔ V3 Small, 기억) |
 | E | 깊이 보정 방식 바꾸기 |
 | C | 3초 연속 캡처 (`%LOCALAPPDATA%\Shift3D\shots`) |
 
@@ -135,6 +157,7 @@
 |---|---|
 | `--process <exe>` / `--title <제목 일부>` | 선택 화면 없이 바로 그 창으로 시작 |
 | `--mode sbs` | 이미 좌우(SBS)인 화면으로 (선택 화면의 체크와 같음) |
+| `--depth-model vda\|v3` | 깊이 모델 — Video DA Small / V3 Small (기본: 마지막에 고른 것) |
 | `--owl-res native\|1440\|1080\|720` | Owl3D 엮기 해상도 |
 | `--owl-quality` | Owl3D 엮기를 원본 해상도로, 자동 화질 낮춤 끄기 |
 | `--borderless` | 게임 창을 테두리 없는 전체 화면으로 (끝내면 원래대로). 게임이 4K로 돌아 느려질 수 있다 |
@@ -146,7 +169,8 @@
 ## English (short)
 
 Watch any window in glasses-free 3D on an **Owl3D Shift** with a GPU where Owl3D's own 2D→3D does not run (e.g. AMD).
-Shift3D turns the window into side-by-side 3D with a small depth model (Depth Anything V3 Small on DirectML, any GPU vendor);
+Shift3D turns the window into side-by-side 3D with a small depth model (Video Depth Anything Small on DirectML, any GPU vendor;
+it remembers earlier frames so depth wobbles less — `Ctrl+Alt+D` switches to the lighter Depth Anything V3 Small, and the choice is kept);
 Owl3D's **Stereo 3D Playback** (Side-by-side) does the eye tracking and weaving. Unofficial, not affiliated with Owl3D;
 no Owl3D files are included. Feature overview: [docs/FEATURES.md](docs/FEATURES.md).
 
@@ -168,7 +192,8 @@ no Owl3D files are included. Feature overview: [docs/FEATURES.md](docs/FEATURES.
    language (`--lang en` forces English).
 
 Hotkeys (Ctrl + Alt + key): ↑/↓ parallax, ←/→ depth, Home/End brightness, PageUp/PageDown gamma (brightness and gamma apply to the
-3D output only and are remembered).
+3D output only and are remembered), D depth model (Video DA Small ↔ V3 Small, remembered; `--depth-model vda|v3` on the command line).
+On a Radeon 780M, Video DA Small updates depth 8–9 times a second and V3 Small about 20; the picture itself runs at the same rate with both.
 
 ## 라이선스 / Third-party
 
@@ -178,6 +203,7 @@ Hotkeys (Ctrl + Alt + key): ↑/↓ parallax, ←/→ depth, Home/End brightness
 |---|---|
 | ONNX Runtime (DirectML) 1.24 | MIT — `licenses/onnxruntime-LICENSE.txt` |
 | DirectML 1.15 | Microsoft 재배포 라이선스 — `licenses/DirectML-LICENSE.txt` |
+| Video Depth Anything Small (depth-anything, ONNX로 변환) | Apache-2.0 — `licenses/Apache-2.0.txt` |
 | Depth Anything V3 Small (onnx-community) | Apache-2.0 — `licenses/Apache-2.0.txt` |
 | Microsoft Visual C++ 런타임 | Visual Studio 재배포 조건 |
 
