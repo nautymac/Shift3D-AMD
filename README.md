@@ -13,8 +13,7 @@
   앞 프레임을 기억해서 프레임 사이 깊이가 덜 출렁인다. 그래픽카드가 느려 원활하지 않으면 이전 모델(Depth Anything V3 Small)이 든 [v0.4.13](../../releases/tag/v0.4.13)을 쓴다.
 - **이미 SBS인 화면은 그대로** — SBS 영상·TriDef·SBS를 직접 내는 게임은 AI 없이 통과. 브라우저·영상 플레이어는 전체 화면일 때만 3D.
 - **3D 화면 위에서 마우스·키보드 그대로** — 창 모드 게임을 확대해 보일 때도 클릭이 정확히 맞는다. 낮은 사양은 창 모드 권장.
-- **Owl3D 엮기 해상도** 1440p / 1080p 선택 (Owl3D 숨은 설정 자동 적용, 자동 화질 낮춤 끔).
-- **깊이 계산 프로필** 부드럽게 / 정밀하게 — PC의 GPU에 맞춰 자동 선택.
+- **깊이 계산 그래픽카드** 부드럽게 / 강한 카드 — PC의 GPU에 맞춰 자동 선택.
 - 화면을 거의 채우는 창은 1:1, 작은 창은 비율을 지켜 확대. 최소화된 게임 창은 자동으로 되살린다.
 - 밝기·감마는 3D 출력에만 적용되고 기억된다. 한/영 UI, 트레이 아이콘, 콘솔 창 없음.
 
@@ -84,14 +83,6 @@
   - 게임: 게임은 실제 커서 위치를 읽으므로, 실제 커서를 **게임 창 안에** 두고 손의 움직임을 창 크기 비율로 옮긴다. 화면에는 Shift3D가 화살표를 대신 그린다. 그래서 확대해 보여도 클릭 위치가 게임과 정확히 맞는다.
 - 캡처는 창이 실제로 그린 해상도 그대로다. 가장 선명하게 보려면 게임 해상도를 모니터 출력 해상도에 맞춘다.
 
-## Owl3D 엮기 해상도 (선택 화면 4번)
-
-"이미 좌우(SBS)"를 체크했을 때만 쓴다 (AI 변환은 원본 해상도로 엮는다). Owl3D는 기본으로 1440p로 줄여 엮고, 부하가 크면 더 낮춘다(자동 화질 낮춤). Shift3D가 3D가 켜진 뒤 Owl3D의 숨은 설정을 자동으로 맞춘다 (잠깐 설정 창이 스칠 수 있다):
-
-- **1440p** — 더 선명. **1080p** — 더 빠르고 조금 부드럽다(낮은 사양 권장). 마지막 선택을 기억한다.
-- 자동 화질 낮춤은 끈다 — 고른 해상도가 그대로 유지된다.
-- 명령줄 `--owl-res native|1440|1080|720` 으로 원본(4K)·720p 까지 정할 수 있다 (선택 화면보다 우선).
-
 ## 모니터 전원 (Shift에는 전원 버튼이 없다)
 
 선택 화면의 **[모니터 끄기]** 버튼, 트레이 메뉴의 **"모니터 끄기"**, 또는 명령줄 `--monitor off` 로 모니터를 **완전히 끈다** (DDC/CI 모니터 명령). `--monitor standby` 는 대기만.
@@ -106,12 +97,12 @@
 
 ## 깊이 계산 (선택 화면에서 고름)
 
+깊이를 어느 그래픽카드에서 계산할지 고른다. 깊이 모델의 입력 크기는 고정이라(476×266) 해상도는 고르지 않는다.
+
 | 선택 | 그래픽카드 | 특징 |
 |---|---|---|
-| 부드럽게 (기본) | 화면을 맡지 않은 카드, 내장 그래픽 우선 · 해상도 238 (그래픽카드가 하나뿐이면 154) | 화면이 끊기지 않는다 |
-| 정밀하게 | 가장 강한 카드 · 해상도 266 (화면을 맡은 카드면 196) | 화면 카드를 Owl3D와 같이 쓰면 깊이 계산이 쉬어 가며 돌아서 가끔 끊길 수 있다 |
-
-위 해상도는 지금 깊이 모델에는 쓰이지 않는다 (Video DA Small은 입력이 476×266으로 고정). 여기서 고르는 것은 깊이를 계산할 그래픽카드다.
+| 부드럽게 (기본) | 화면을 맡지 않은 카드, 내장 그래픽 우선 (그래픽카드가 하나뿐이면 그 카드) | 화면이 끊기지 않는다 |
+| 강한 카드 | 가장 강한 카드 | 그 카드가 화면도 맡고 있으면 깊이 계산이 쉬어 가며 돌아서 가끔 끊길 수 있다 (선택 화면에 표시) |
 
 ## 깊이 모델 — 느리면 이전 버전(v0.4.13)
 
@@ -126,7 +117,7 @@ v0.4.14부터 깊이 모델은 **Video Depth Anything Small**이다. 앞 프레�
 | | 새 버전 (Video DA Small) | v0.4.13 (V3 Small) |
 |---|---|---|
 | 부드럽게 (780M) | 깊이 초당 8~9회 | 초당 19~22회 |
-| 정밀하게 (7600M XT, 화면 카드라 쉬어 감) | 초당 4~6회 | 초당 11~13회 |
+| 강한 카드 (7600M XT, 화면 카드라 쉬어 감) | 초당 4~6회 | 초당 11~13회 |
 
 이 PC에서는 '부드럽게'가 낫다.
 
@@ -153,7 +144,7 @@ v0.4.14부터 깊이 모델은 **Video Depth Anything Small**이다. 앞 프레�
 |---|---|
 | `--process <exe>` / `--title <제목 일부>` | 선택 화면 없이 바로 그 창으로 시작 |
 | `--mode sbs` | 이미 좌우(SBS)인 화면으로 (선택 화면의 체크와 같음) |
-| `--owl-res native\|1440\|1080\|720` | Owl3D 엮기 해상도 |
+| `--owl-res native\|1440\|1080\|720` | Owl3D가 엮는 해상도를 정한다 (Owl3D 숨은 설정, 자동 화질 낮춤도 끔). 선택 화면에는 없다 |
 | `--owl-quality` | Owl3D 엮기를 원본 해상도로, 자동 화질 낮춤 끄기 |
 | `--borderless` | 게임 창을 테두리 없는 전체 화면으로 (끝내면 원래대로). 게임이 4K로 돌아 느려질 수 있다 |
 | `--monitor off\|standby\|on` | 모니터 완전 끄기 / 대기(둘 다 움직이면 켜짐) / 켜기 — DDC/CI |
@@ -180,8 +171,8 @@ no Owl3D files are included. Feature overview: [docs/FEATURES.md](docs/FEATURES.
    drawn 1:1 in place; a smaller one is scaled up keeping its aspect ratio. For a windowed game shown enlarged, the real cursor is kept
    inside the game window and moved in proportion, with an arrow drawn on the 3D picture, so clicks land where you see them.
    Windowed mode is recommended on slow PCs.
-5. With the SBS box ticked, section 4 picks Owl3D's weave resolution, 1440p or 1080p (lighter; AI mode weaves at native resolution); Shift3D sets Owl3D's hidden setting after 3D starts and turns its
-   auto quality drop off. Command line: `--owl-res native|1440|1080|720`.
+5. Depth runs on the GPU you pick — Smooth (the GPU not driving the screen) or Strongest GPU. Owl3D's weave resolution is left to Owl3D;
+   the command line `--owl-res native|1440|1080|720` still sets its hidden setting and turns its auto quality drop off.
 6. The Shift has no power button: the picker's "Monitor off" button, the tray item or `--monitor off` powers it off over DDC/CI (`--monitor standby` for standby), and any mouse or keyboard input turns it back on (`--monitor on` if needed).
 7. Quit with `Ctrl+Alt+Q` or the Shift3D tray icon. No console window; errors show in a message box. The UI follows the Windows display
    language (`--lang en` forces English).

@@ -7,8 +7,7 @@
 - **Too slow on your GPU?** Use [v0.4.13](https://github.com/nautymac/Shift3D-AMD/releases/tag/v0.4.13), built around the lighter, faster Depth Anything V3 Small.
 - **Already-SBS passthrough** — SBS video, TriDef, or games that render SBS themselves go straight through without AI. Browsers and video players switch to 3D only when fullscreen (YouTube fullscreen / F11), so the page stays usable until then.
 - **Mouse and keyboard keep working on the 3D picture** — including windowed games shown enlarged: the real cursor stays inside the game window and moves in proportion, with an arrow drawn on the 3D frame, so clicks land exactly where you see them. Windowed mode is recommended on slower PCs.
-- **Owl3D weave resolution** — pick 1440p or 1080p; Shift3D sets Owl3D's hidden setting automatically and turns its auto quality drop off. 1080p is noticeably lighter.
-- **Depth profile** — "Smooth" (runs on the GPU that isn't driving the screen, no stutter) or "Detail" (strongest GPU); chosen automatically for your PC.
+- **Depth GPU** — "Smooth" (runs on the GPU that isn't driving the screen, no stutter) or "Strongest GPU"; chosen automatically for your PC.
 - **Window handling** — near-fullscreen windows drawn 1:1, smaller ones scaled up keeping their aspect ratio; a minimized game window is restored automatically.
 - **Brightness / gamma for the 3D output only**, remembered between runs.
 - **Monitor power** — the Shift has no power button: a "Monitor off" button (picker / tray / `--monitor off`) powers it off over DDC/CI, and any mouse or keyboard input turns it back on.
@@ -38,8 +37,7 @@ Download: https://github.com/nautymac/Shift3D-AMD/releases
 - **그래픽카드가 느려 원활하지 않으면** 더 가볍고 빠른 이전 모델(Depth Anything V3 Small)이 든 [v0.4.13](https://github.com/nautymac/Shift3D-AMD/releases/tag/v0.4.13)을 쓴다.
 - **이미 SBS인 화면은 그대로** — SBS 영상·TriDef·SBS를 직접 내는 게임은 AI 없이 통과. 브라우저·영상 플레이어는 전체 화면일 때만 3D로 바뀌어 그 전까지 페이지를 평소처럼 쓸 수 있다.
 - **3D 화면 위에서 마우스·키보드 그대로** — 창 모드 게임을 확대해 보일 때도 실제 커서를 게임 창 안에 두고 비율로 움직이며 화살표를 3D 화면에 그려서 클릭이 정확히 맞는다. 낮은 사양은 창 모드 권장.
-- **Owl3D 엮기 해상도** — 1440p / 1080p 선택. Owl3D의 숨은 설정을 자동으로 맞추고 자동 화질 낮춤을 끈다. 1080p가 눈에 띄게 가볍다.
-- **깊이 계산 프로필** — 부드럽게(화면을 맡지 않은 GPU, 끊김 없음) / 정밀하게(가장 강한 GPU); PC에 맞춰 자동 선택.
+- **깊이 계산 그래픽카드** — 부드럽게(화면을 맡지 않은 GPU, 끊김 없음) / 강한 카드(가장 강한 GPU); PC에 맞춰 자동 선택.
 - **창 처리** — 화면을 거의 채우는 창은 1:1, 작은 창은 비율을 지켜 확대; 최소화된 게임 창은 자동으로 되살린다.
 - **밝기·감마는 3D 출력에만** 적용되고 기억된다.
 - **모니터 전원** — Shift에는 전원 버튼이 없다. [모니터 끄기] 버튼(선택 화면·트레이·`--monitor off`)으로 완전히 끄고, 마우스나 키보드를 움직이면 다시 켜진다 (DDC/CI).
