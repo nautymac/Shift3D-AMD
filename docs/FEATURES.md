@@ -4,7 +4,7 @@
 
 **Features**
 - **2D → 3D for any window** — captures the window and builds side-by-side 3D with a small depth model (Video Depth Anything Small on DirectML, works on any GPU vendor). It remembers earlier frames, so depth wobbles less from frame to frame.
-- **Two depth models** — Video Depth Anything Small (default) or the lighter, faster Depth Anything V3 Small; `Ctrl+Alt+D` switches in a second or two and the choice is remembered.
+- **Too slow on your GPU?** Use [v0.4.13](https://github.com/nautymac/Shift3D-AMD/releases/tag/v0.4.13), built around the lighter, faster Depth Anything V3 Small.
 - **Already-SBS passthrough** — SBS video, TriDef, or games that render SBS themselves go straight through without AI. Browsers and video players switch to 3D only when fullscreen (YouTube fullscreen / F11), so the page stays usable until then.
 - **Mouse and keyboard keep working on the 3D picture** — including windowed games shown enlarged: the real cursor stays inside the game window and moves in proportion, with an arrow drawn on the 3D frame, so clicks land exactly where you see them. Windowed mode is recommended on slower PCs.
 - **Owl3D weave resolution** — pick 1440p or 1080p; Shift3D sets Owl3D's hidden setting automatically and turns its auto quality drop off. 1080p is noticeably lighter.
@@ -22,7 +22,6 @@
 | ← / → | Depth — scene further back / closer |
 | Home / End | Brightness up / down (3D output only, remembered) |
 | PageUp / PageDown | Gamma up / down (3D output only, remembered) |
-| D | Depth model — Video DA Small ↔ V3 Small (remembered) |
 
 **Requirements** — Windows 10/11 x64, DirectX 12 GPU, Owl3D Shift + Owl3D app 2.3.2 or later (Stereo 3D Playback → Side-by-side → Start). Chrome/Edge need `--disable-features=CalculateNativeWinOcclusion` so they keep drawing while covered.
 
@@ -36,7 +35,7 @@ Download: https://github.com/nautymac/Shift3D-AMD/releases
 
 **기능**
 - **아무 창이나 2D → 3D** — 창을 캡처해 깊이 모델(Video Depth Anything Small, DirectML — 어떤 GPU든)로 좌우(SBS) 영상을 만든다. 앞 프레임을 기억해서 프레임 사이 깊이가 덜 출렁인다.
-- **깊이 모델 두 가지** — Video Depth Anything Small(기본) / 더 가볍고 빠른 Depth Anything V3 Small. `Ctrl+Alt+D`로 1~2초 만에 바꾸고, 고른 것을 기억한다.
+- **그래픽카드가 느려 원활하지 않으면** 더 가볍고 빠른 이전 모델(Depth Anything V3 Small)이 든 [v0.4.13](https://github.com/nautymac/Shift3D-AMD/releases/tag/v0.4.13)을 쓴다.
 - **이미 SBS인 화면은 그대로** — SBS 영상·TriDef·SBS를 직접 내는 게임은 AI 없이 통과. 브라우저·영상 플레이어는 전체 화면일 때만 3D로 바뀌어 그 전까지 페이지를 평소처럼 쓸 수 있다.
 - **3D 화면 위에서 마우스·키보드 그대로** — 창 모드 게임을 확대해 보일 때도 실제 커서를 게임 창 안에 두고 비율로 움직이며 화살표를 3D 화면에 그려서 클릭이 정확히 맞는다. 낮은 사양은 창 모드 권장.
 - **Owl3D 엮기 해상도** — 1440p / 1080p 선택. Owl3D의 숨은 설정을 자동으로 맞추고 자동 화질 낮춤을 끈다. 1080p가 눈에 띄게 가볍다.
@@ -54,7 +53,6 @@ Download: https://github.com/nautymac/Shift3D-AMD/releases
 | ← / → | 깊이 — 화면 뒤로 / 앞으로 |
 | Home / End | 밝기 올리기 / 내리기 (3D 출력만, 기억) |
 | PageUp / PageDown | 감마 올리기 / 내리기 (3D 출력만, 기억) |
-| D | 깊이 모델 바꾸기 — Video DA Small ↔ V3 Small (기억) |
 
 **필요한 것** — Windows 10/11 64비트, DirectX 12 그래픽카드, Owl3D Shift + Owl3D 앱 2.3.2 이상 (Stereo 3D Playback → Side-by-side → Start). 크롬·엣지는 `--disable-features=CalculateNativeWinOcclusion` 옵션 필요.
 
